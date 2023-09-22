@@ -1,18 +1,19 @@
 import React from "react";
+import "./education.css"
 
 export function Education() {
   return (
     <>
       <h1>Education</h1>
       <div>
-        <div>
+        <div className="header">
           <h3>Bloomtech</h3>
           <p>
             I am currently attending Bloomtech studying full stack web
             development
           </p>
         </div>
-        <div>
+        <div className="body">
           <h3>Bachelors Degree</h3>
           <p>
             I have Bachelors of Science degree from California State University
