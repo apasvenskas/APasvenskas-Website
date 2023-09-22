@@ -32,7 +32,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: black;
 }
 
 .introductoryParagraph {
@@ -46,12 +46,68 @@ nav {
   margin-right: 5%;
   display: flex;
   justify-content: space-between;
-
 }
 
-nav .home {
-  border: 4px solid black;
+#education {
+  text-decoration: none;
+  color: black;
+  padding: .3%;
+  border: 2px solid black; 
+  border-radius: 10px; 
 }
+
+#education:hover {
+  background-color: #b2beb5; 
+ }
+
+#experience {
+  text-decoration: none;
+  color: black;
+  padding: .3%;
+  border: 2px solid black;
+  border-radius: 10px; 
+}
+
+#experience:hover {
+  background-color: #b2beb5; 
+ }
+
+
+#projects {
+  text-decoration: none;
+  color: black;
+  padding: .3%;
+  border: 2px solid black;
+  border-radius: 10px; 
+}
+
+#projects:hover {
+  background-color: #b2beb5; 
+ }
+
+#about-me {
+  text-decoration: none;
+  color: black;
+  padding: .3%;
+  border: 2px solid black;
+  border-radius: 10px; 
+}
+
+#about-me:hover {
+  background-color: #b2beb5; 
+ }
+
+#contacts {
+  text-decoration: none;
+  color: black;
+  padding: .3%;
+  border: 2px solid black;
+  border-radius: 10px; 
+}
+
+#contacts:hover {
+  background-color: #b2beb5; 
+ }
 
 @keyframes App-logo-spin {
   from {
