@@ -32,7 +32,7 @@ function App() {
             <p className="introductoryParagraph">
               Introductory text goes here: For example: Hello my name is Audrius
               and I am a software developer. My expertice and knowledge are
-              primarly with HTML, CSS, Java Script, and React. I am also
+              primarly with HTML, CSS, Java Script, React, and Node.js. I am also
               proficient with using Redux and some other tools that come with it
               such as Thunk.
             </p>
