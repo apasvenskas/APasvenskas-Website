@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import emailjs from "emailjs-com";
-// import { init } from "emailjs-com";
-
-emailjs.init("YOUR_USER_ID");
 
 const ContactForm = (props) => {
     const { contacts, setContacts, newContact, setNewContact } = props;
@@ -19,24 +15,21 @@ const handleSubmit = (e) => {
   setContacts([...contacts, newContactWithId]);
   setNewContact({ name: "", email: "", phone: "" });
 
-  // send email using EmailJS
-  emailjs
-    .send(
-      "YOUR_SERVICE_ID",
-      "YOUR_TEMPLATE_ID",
-      newContactWithId,
-      "YOUR_USER_ID"
-    )
-    .then(
-      (result) => {
-        console.log(result.text);
-      },
-      (error) => {
-        console.log(error.text);
-      }
-    );
+  fetch("/contacts", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newContactWithId),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
-
 
   return (
         <form onSubmit={handleSubmit}>
@@ -72,6 +65,8 @@ const handleSubmit = (e) => {
       );
     };
     
+    export default ContactForm 
+    
     export function Contacts() {
         const [contacts, setContacts] = useState([]);
         const [newContact, setNewContact] = useState({
@@ -88,8 +83,10 @@ const handleSubmit = (e) => {
                 newContact={newContact}
                 setNewContact={setNewContact}
             />
-            <h3>Contact List</h3>
-            <ul>
+            <h3>I will contact you as soon as posible..
+
+            </h3>
+            {/* <ul>
                 {contacts.map((contact) => {
                     return (
                     <li key={contact.id}>
@@ -97,8 +94,9 @@ const handleSubmit = (e) => {
                     </li>
                     )
                 })}
-            </ul>
+            </ul> */}
             </>
         )
     }
+
 
