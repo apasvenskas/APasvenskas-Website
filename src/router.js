@@ -1,7 +1,6 @@
-
 const express = require("express")
 const router = express.Router()
-const knex = require('../db/knex.js') // import the knex object
+const knex = require('../migrations/dbConfig') // import the knex object
 
 // create a get endpoint for getting all the projects
 router.get('/', async (req, res) => {

@@ -1,10 +1,10 @@
 // contactsRouter.js
 const express = require("express")
 const router = express.Router()
-const knex = require('../db/knex.js') // import the knex object
+const knex = require('../../migrations/dbConfig') // import the knex object
 
 // create a post endpoint for creating a new contact
-router.post('/', async (req, res) => {
+router.post('/contacts', async (req, res) => {
   try {
     // get the contact data from the request body
     const contact = req.body
