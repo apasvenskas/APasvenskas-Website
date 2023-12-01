@@ -45,67 +45,19 @@ nav {
   margin-left: 5%;
   margin-right: 5%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* center the nav element horizontally */
 }
 
-#education {
+nav a {
   text-decoration: none;
   color: black;
   padding: .3%;
   border: 2px solid black; 
   border-radius: 10px; 
+  margin: 0 10px; /* add some space between the links */
 }
 
-#education:hover {
-  background-color: #b2beb5; 
- }
-
-#experience {
-  text-decoration: none;
-  color: black;
-  padding: .3%;
-  border: 2px solid black;
-  border-radius: 10px; 
-}
-
-#experience:hover {
-  background-color: #b2beb5; 
- }
-
-
-#projects {
-  text-decoration: none;
-  color: black;
-  padding: .3%;
-  border: 2px solid black;
-  border-radius: 10px; 
-}
-
-#projects:hover {
-  background-color: #b2beb5; 
- }
-
-#about-me {
-  text-decoration: none;
-  color: black;
-  padding: .3%;
-  border: 2px solid black;
-  border-radius: 10px; 
-}
-
-#about-me:hover {
-  background-color: #b2beb5; 
- }
-
-#contacts {
-  text-decoration: none;
-  color: black;
-  padding: .3%;
-  border: 2px solid black;
-  border-radius: 10px; 
-}
-
-#contacts:hover {
+nav a:hover {
   background-color: #b2beb5; 
  }
 
@@ -117,5 +69,3 @@ nav {
     transform: rotate(360deg);
   }
 }
-
-

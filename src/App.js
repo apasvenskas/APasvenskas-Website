@@ -38,7 +38,7 @@ function App() {
             </p>
           </div>
           <nav>
-            {/* <NavLink id="home" to="/">Home</NavLink> */}
+            <NavLink id="home" to="/">Home</NavLink>
             <NavLink id="education" to="/education">
               Education
             </NavLink>
