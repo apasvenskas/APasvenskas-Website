@@ -1,35 +1,29 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const ContactForm = (props) => {
-    const { contacts, setContacts, newContact, setNewContact } = props;
+    const { newContact, setNewContact } = props;
 
 
 const handleInputChange = (e) => {
   setNewContact({ ...newContact, [e.target.name]: e.target.value });
 };
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-  const newId = Math.floor(Math.random() * 1000000);
-  const newContactWithId = { ...newContact, id: newId };
-  setContacts([...contacts, newContactWithId]);
-  setNewContact({ name: "", email: "", phone: "" });
-
-  fetch("/contacts", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newContactWithId),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  // create an object with the contact data
+  const contact = { name: newContact.name, email: newContact.email, phone: newContact.phone };
+    try {
+    // await for the response from the server
+    const response = await axios.post('http://localhost:3000/contacts', contact);
+    console.log(response.data);
+    alert('Contact created successfully.');
+  } catch (error) {
+    console.error(error);
+    alert('Something went wrong. Please try again later.');
+  }
 };
+
 
   return (
         <form onSubmit={handleSubmit}>
@@ -83,18 +77,7 @@ const handleSubmit = (e) => {
                 newContact={newContact}
                 setNewContact={setNewContact}
             />
-            <h3>I will contact you as soon as posible..
-
-            </h3>
-            {/* <ul>
-                {contacts.map((contact) => {
-                    return (
-                    <li key={contact.id}>
-                        {contact.name} - {contact.email} - {contact.phone}
-                    </li>
-                    )
-                })}
-            </ul> */}
+            <h3>I will contact you as soon as posible..</h3>
             </>
         )
     }
