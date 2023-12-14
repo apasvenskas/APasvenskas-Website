@@ -45,7 +45,7 @@ nav {
   margin-left: 5%;
   margin-right: 5%;
   display: flex;
-  justify-content: center; /* center the nav element horizontally */
+  justify-content: center; 
 }
 
 nav a {
@@ -54,11 +54,23 @@ nav a {
   padding: .3%;
   border: 2px solid black; 
   border-radius: 10px; 
-  margin: 0 10px; /* add some space between the links */
+  margin: 0 10px; 
 }
 
 nav a:hover {
   background-color: #b2beb5; 
+ }
+
+ .button {
+  border: 2px solid #282c34;
+  border-radius: 10px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: .3%;
  }
 
 @keyframes App-logo-spin {
