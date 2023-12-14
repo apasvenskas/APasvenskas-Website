@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function Projects() {
     return(
@@ -7,8 +8,9 @@ export function Projects() {
         <div className="AIproject">
             <h3>AI Sumarizer</h3>
             <p>A single page App that sumarises a webpage or an article.</p>
-            <button>AI Sumarizer</button>
+            <Link to="https://curious-cat-d84fe1.netlify.app/" className="button">AI Sumarizer</Link>
         </div>
         </>
     )
 }
+
