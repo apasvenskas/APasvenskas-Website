@@ -6,6 +6,7 @@ import { Experience } from "./components/experience";
 import { Projects } from "./components/projects";
 import { Contacts } from "./components/contacts";
 import { AboutMe } from "./components/about-me";
+import { Home } from "./components/home";
 
 function App() {
   return (
@@ -38,7 +39,9 @@ function App() {
             </p>
           </div>
           <nav>
-            <NavLink id="home" to="/">Home</NavLink>
+            <NavLink id="home" to="/home">
+              Home
+            </NavLink>
             <NavLink id="education" to="/education">
               Education
             </NavLink>
@@ -57,6 +60,7 @@ function App() {
           </nav>
           {/* <Routes path="/" element={<Home />} /> */}
           <Routes>
+            <Route path="/home" element={<Home />} />
             <Route path="/education" element={<Education />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
