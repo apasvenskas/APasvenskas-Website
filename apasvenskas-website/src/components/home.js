@@ -1,23 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@material-ui/core";
+// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import styles from './home.module.css';
 
-// The size of each cell in the grid
+// const Tab = createBottomTabNavigator();
 const CELL_SIZE = 20;
-
-// The initial state of the game
 const initialState = {
-  // The snake is an array of segments, each with an x and y coordinate
   snake: [
     { x: 10, y: 10 },
     { x: 10, y: 11 },
     { x: 10, y: 12 },
   ],
-  // The direction is an object with an x and y component
   direction: { x: 0, y: -1 },
-  // The food is an object with an x and y coordinate
   food: { x: 15, y: 15 },
-  // The score is a number
   score: 0,
 };
 
@@ -39,26 +34,18 @@ function useInterval(callback, delay) {
 }
 
 // The main component for the game
-function Home() {
-  // Use state hooks to store the game state and the speed
+export function Home() {
   const [state, setState] = useState(initialState);
   const [speed, setSpeed] = useState(200);
 
-  // A function to move the snake by one step
   const moveSnake = () => {
     // Get the current state
     const { snake, direction, food, score } = state;
-
-    // Get the head of the snake
     const head = snake[0];
-
-    // Calculate the new head position based on the direction
     const newHead = {
       x: head.x + direction.x,
       y: head.y + direction.y,
     };
-
-    // Check if the snake has hit the wall or itself
     const hasHitWall =
       newHead.x < 0 ||
       newHead.x >= Math.floor(window.innerWidth / CELL_SIZE) ||
@@ -68,15 +55,14 @@ function Home() {
     const hasHitSelf = snake.some(
       (segment) => segment.x === newHead.x && segment.y === newHead.y
     );
-
     // If the snake has hit something, reset the game
+    // Remove the semicolon and add curly braces
     if (hasHitWall || hasHitSelf) {
       setState(initialState);
       setSpeed(200);
       return;
     }
 
-    // Check if the snake has eaten the food
     const hasEatenFood = newHead.x === food.x && newHead.y === food.y;
 
     // If the snake has eaten the food, increase the score and the speed, and generate a new food position
@@ -109,33 +95,27 @@ function Home() {
     }
   };
 
-  // A function to handle the key press event
   const handleKeyPress = (event) => {
     // Get the current direction
     const { direction } = state;
-
     // Change the direction based on the key code
     switch (event.keyCode) {
-      case 37: // left arrow
-        // Prevent going left if already going right
+      case 37:
         if (direction.x !== 1) {
           setState({ ...state, direction: { x: -1, y: 0 } });
         }
         break;
-      case 38: // up arrow
-        // Prevent going up if already going down
+      case 38:
         if (direction.y !== 1) {
           setState({ ...state, direction: { x: 0, y: -1 } });
         }
         break;
-      case 39: // right arrow
-        // Prevent going right if already going left
+      case 39:
         if (direction.x !== -1) {
           setState({ ...state, direction: { x: 1, y: 0 } });
         }
         break;
-      case 40: // down arrow
-        // Prevent going down if already going up
+      case 40:
         if (direction.y !== -1) {
           setState({ ...state, direction: { x: 0, y: 1 } });
         }
@@ -145,12 +125,8 @@ function Home() {
     }
   };
 
-  // A function to handle the click event on the buttons
   const handleClick = (dir) => {
-    // Get the current direction
     const { direction } = state;
-
-    // Change the direction based on the button value
     switch (dir) {
       case "LEFT":
         // Prevent going left if already going right
@@ -159,19 +135,16 @@ function Home() {
         }
         break;
       case "UP":
-        // Prevent going up if already going down
         if (direction.y !== 1) {
           setState({ ...state, direction: { x: 0, y: -1 } });
         }
         break;
       case "RIGHT":
-        // Prevent going right if already going left
         if (direction.x !== -1) {
           setState({ ...state, direction: { x: 1, y: 0 } });
         }
         break;
       case "DOWN":
-        // Prevent going down if already going up
         if (direction.y !== -1) {
           setState({ ...state, direction: { x: 0, y: 1 } });
         }
@@ -185,12 +158,11 @@ function Home() {
   useInterval(moveSnake, speed);
 
   // Use an effect hook to add and remove the key press event listener
+  // Add an empty dependency array as the second argument
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
   }, []);
-
-  // Render the game elements using the state
   return (
     <>
       <div className={styles.snake}>
@@ -255,5 +227,6 @@ function Home() {
       </div>
     </>
   );
+  }
   
       
