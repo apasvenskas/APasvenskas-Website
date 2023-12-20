@@ -1,245 +1,259 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Menu } from "@material-ui/core";
-// import "./App.css";
+import { Button } from "@material-ui/core";
+import styles from './home.module.css';
 
 // The size of each cell in the grid
 const CELL_SIZE = 20;
 
-// The initial position and direction of the snake
-const INITIAL_SNAKE = [
-  { x: 0, y: 0, dir: "RIGHT" },
-  { x: -1, y: 0, dir: "RIGHT" },
-];
-
-// The initial position of the food
-const INITIAL_FOOD = { x: 10, y: 10 };
-
-// The initial score
-const INITIAL_SCORE = 0;
-
-// The initial game state
-const INITIAL_STATE = {
-  snake: INITIAL_SNAKE,
-  food: INITIAL_FOOD,
-  score: INITIAL_SCORE,
-  gameOver: false,
+// The initial state of the game
+const initialState = {
+  // The snake is an array of segments, each with an x and y coordinate
+  snake: [
+    { x: 10, y: 10 },
+    { x: 10, y: 11 },
+    { x: 10, y: 12 },
+  ],
+  // The direction is an object with an x and y component
+  direction: { x: 0, y: -1 },
+  // The food is an object with an x and y coordinate
+  food: { x: 15, y: 15 },
+  // The score is a number
+  score: 0,
 };
 
-// A custom hook to use an interval
+// A custom hook to run a function at a certain interval
 function useInterval(callback, delay) {
-  const savedCallback = useRef();
-
+  // Save the callback in a ref to prevent changing the interval
+  const callbackRef = useRef(callback);
   useEffect(() => {
-    savedCallback.current = callback;
+    callbackRef.current = callback;
   }, [callback]);
 
+  // Set up the interval and clear it when unmounting
   useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
     if (delay !== null) {
-      let id = setInterval(tick, delay);
+      const id = setInterval(() => callbackRef.current(), delay);
       return () => clearInterval(id);
     }
   }, [delay]);
 }
 
-// The main app component
-export function Home() {
-  // The state of the game
-  const [state, setState] = useState(INITIAL_STATE);
-
-  // The speed of the game
+// The main component for the game
+function Home() {
+  // Use state hooks to store the game state and the speed
+  const [state, setState] = useState(initialState);
   const [speed, setSpeed] = useState(200);
 
-  // The handler for key press events
-  const handleKeyPress = (e) => {
-    e.preventDefault();
-    const { snake } = state;
-    const head = snake[0];
-    const newDir = e.key.replace("Arrow", "").toUpperCase();
-    // Change the direction of the snake head if it is not opposite to the current direction
-    if (
-      (newDir === "UP" && head.dir !== "DOWN") ||
-      (newDir === "DOWN" && head.dir !== "UP") ||
-      (newDir === "LEFT" && head.dir !== "RIGHT") ||
-      (newDir === "RIGHT" && head.dir !== "LEFT")
-    ) {
-      setState((prevState) => ({
-        ...prevState,
-        snake: [{ ...head, dir: newDir }, ...snake.slice(1)],
-      }));
-    }
-  };
-
-  // The handler for button click events
-  const handleClick = (dir) => {
-    const { snake } = state;
-    const head = snake[0];
-    // Change the direction of the snake head if it is not opposite to the current direction
-    if (
-      (dir === "UP" && head.dir !== "DOWN") ||
-      (dir === "DOWN" && head.dir !== "UP") ||
-      (dir === "LEFT" && head.dir !== "RIGHT") ||
-      (dir === "RIGHT" && head.dir !== "LEFT")
-    ) {
-      setState((prevState) => ({
-        ...prevState,
-        snake: [{ ...head, dir }, ...snake.slice(1)],
-      }));
-    }
-  };
-
-  // The function to move the snake
+  // A function to move the snake by one step
   const moveSnake = () => {
-    const { snake, food, score } = state;
+    // Get the current state
+    const { snake, direction, food, score } = state;
+
+    // Get the head of the snake
     const head = snake[0];
-    let newHead;
-    // Calculate the new position of the snake head based on its direction
-    switch (head.dir) {
-      case "UP":
-        newHead = { x: head.x, y: head.y - 1, dir: head.dir };
+
+    // Calculate the new head position based on the direction
+    const newHead = {
+      x: head.x + direction.x,
+      y: head.y + direction.y,
+    };
+
+    // Check if the snake has hit the wall or itself
+    const hasHitWall =
+      newHead.x < 0 ||
+      newHead.x >= Math.floor(window.innerWidth / CELL_SIZE) ||
+      newHead.y < 0 ||
+      newHead.y >= Math.floor(window.innerHeight / CELL_SIZE);
+
+    const hasHitSelf = snake.some(
+      (segment) => segment.x === newHead.x && segment.y === newHead.y
+    );
+
+    // If the snake has hit something, reset the game
+    if (hasHitWall || hasHitSelf) {
+      setState(initialState);
+      setSpeed(200);
+      return;
+    }
+
+    // Check if the snake has eaten the food
+    const hasEatenFood = newHead.x === food.x && newHead.y === food.y;
+
+    // If the snake has eaten the food, increase the score and the speed, and generate a new food position
+    if (hasEatenFood) {
+      const newScore = score + 1;
+      const newSpeed = speed - 10;
+      const newFood = {
+        x: Math.floor(Math.random() * Math.floor(window.innerWidth / CELL_SIZE)),
+        y: Math.floor(
+          Math.random() * Math.floor(window.innerHeight / CELL_SIZE)
+        ),
+      };
+
+      // Set the new state with the new head, score, speed, and food
+      setState({
+        snake: [newHead, ...snake],
+        direction,
+        food: newFood,
+        score: newScore,
+      });
+      setSpeed(newSpeed);
+    } else {
+      // If the snake has not eaten the food, just move the snake by adding the new head and removing the tail
+      setState({
+        snake: [newHead, ...snake.slice(0, -1)],
+        direction,
+        food,
+        score,
+      });
+    }
+  };
+
+  // A function to handle the key press event
+  const handleKeyPress = (event) => {
+    // Get the current direction
+    const { direction } = state;
+
+    // Change the direction based on the key code
+    switch (event.keyCode) {
+      case 37: // left arrow
+        // Prevent going left if already going right
+        if (direction.x !== 1) {
+          setState({ ...state, direction: { x: -1, y: 0 } });
+        }
         break;
-      case "DOWN":
-        newHead = { x: head.x, y: head.y + 1, dir: head.dir };
+      case 38: // up arrow
+        // Prevent going up if already going down
+        if (direction.y !== 1) {
+          setState({ ...state, direction: { x: 0, y: -1 } });
+        }
         break;
-      case "LEFT":
-        newHead = { x: head.x - 1, y: head.y, dir: head.dir };
+      case 39: // right arrow
+        // Prevent going right if already going left
+        if (direction.x !== -1) {
+          setState({ ...state, direction: { x: 1, y: 0 } });
+        }
         break;
-      case "RIGHT":
-        newHead = { x: head.x + 1, y: head.y, dir: head.dir };
+      case 40: // down arrow
+        // Prevent going down if already going up
+        if (direction.y !== -1) {
+          setState({ ...state, direction: { x: 0, y: 1 } });
+        }
         break;
       default:
-        newHead = head;
-    }
-    // Check if the snake eats the food
-    let newFood = food;
-    let newScore = score;
-    let newSpeed = speed;
-    if (newHead.x === food.x && newHead.y === food.y) {
-      // Generate a new food at a random position
-      newFood = {
-        x: Math.floor(Math.random() * (window.innerWidth / CELL_SIZE)),
-        y: Math.floor(Math.random() * (window.innerHeight / CELL_SIZE)),
-      };
-      // Increase the score and the speed
-      newScore++;
-      newSpeed -= 10;
-    } else {
-      // Remove the last segment of the snake
-      snake.pop();
-    }
-    // Add the new head to the snake
-    snake.unshift(newHead);
-    // Update the state
-    setState((prevState) => ({
-      ...prevState,
-      snake,
-      food: newFood,
-      score: newScore,
-    }));
-    // Update the speed
-    setSpeed(newSpeed);
-  };
-
-  // The function to check if the snake is out of bounds
-  const checkOutOfBounds = () => {
-    const { snake } = state;
-    const head = snake[0];
-    // Check if the snake head is outside the window
-    if (
-      head.x < 0 ||
-      head.x >= window.innerWidth / CELL_SIZE ||
-      head.y < 0 ||
-      head.y >= window.innerHeight / CELL_SIZE
-    ) {
-      return true;
-    }
-    return false;
-  };
-
-  // The function to check if the snake has collapsed
-  const checkCollapsed = () => {
-    const { snake } = state;
-    const head = snake[0];
-    // Check if the snake head is overlapping with any of its body segments
-    for (let i = 1; i < snake.length; i++) {
-      if (head.x === snake[i].x && head.y === snake[i].y) {
-        return true;
-      }
-    }
-    return false;
-  };
-
-  // The function to check if the game is over
-  const checkGameOver = () => {
-    if (checkOutOfBounds() || checkCollapsed()) {
-      // Set the game over flag to true
-      setState((prevState) => ({
-        ...prevState,
-        gameOver: true,
-      }));
-      // Stop the interval
-      setSpeed(null);
+        break;
     }
   };
 
-  // The function to reset the game
-  const resetGame = () => {
-    // Reset the state and the speed
-    setState(INITIAL_STATE);
-    setSpeed(200);
+  // A function to handle the click event on the buttons
+  const handleClick = (dir) => {
+    // Get the current direction
+    const { direction } = state;
+
+    // Change the direction based on the button value
+    switch (dir) {
+      case "LEFT":
+        // Prevent going left if already going right
+        if (direction.x !== 1) {
+          setState({ ...state, direction: { x: -1, y: 0 } });
+        }
+        break;
+      case "UP":
+        // Prevent going up if already going down
+        if (direction.y !== 1) {
+          setState({ ...state, direction: { x: 0, y: -1 } });
+        }
+        break;
+      case "RIGHT":
+        // Prevent going right if already going left
+        if (direction.x !== -1) {
+          setState({ ...state, direction: { x: 1, y: 0 } });
+        }
+        break;
+      case "DOWN":
+        // Prevent going down if already going up
+        if (direction.y !== -1) {
+          setState({ ...state, direction: { x: 0, y: 1 } });
+        }
+        break;
+      default:
+        break;
+    }
   };
 
-  // Use an interval to move the snake and check the game over condition
-  useInterval(() => {
-    moveSnake();
-    checkGameOver();
-  }, speed);
+  // Use the custom hook to move the snake at a certain speed
+  useInterval(moveSnake, speed);
 
-  // Add an event listener for key press events
+  // Use an effect hook to add and remove the key press event listener
   useEffect(() => {
     window.addEventListener("keydown", handleKeyPress);
     return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [handleKeyPress]);
+  }, []);
 
-  // Render the app component
+  // Render the game elements using the state
   return (
-    <div className="App">
-      <h1>Snake Game</h1>
-      <h2>Score: {state.score}</h2>
-      <div className="board">
-        {/* Render the snake */}
-        {state.snake.map((segment, i) => (
+    <>
+      <div className={styles.snake}>
+        <div className={styles.backgroundGrid}>
+          {/* Horizontal grid lines */}
+          {Array.from(
+            { length: Math.max(0, Math.floor(window.innerHeight / CELL_SIZE)) },
+            (_, i) => (
+              <div
+                key={i}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "1px", // uncomment this line
+                  top: `${i * CELL_SIZE}px`,
+                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                }}
+              />
+            )
+          )}
+          {/* Vertical grid lines */}
+          {Array.from(
+            { length: Math.max(0, Math.floor(window.innerWidth / CELL_SIZE)) },
+            (_, i) => (
+              <div
+                key={i}
+                style={{
+                  position: "absolute",
+                  height: "100%",
+                  width: "1px", // uncomment this line
+                  left: `${i * CELL_SIZE}px`,
+                  backgroundColor: "rgba(0, 0, 0, 0.1)",
+                }}
+              />
+            )
+          )}
+        </div>
+        {state.snake.map((segment) => (
           <div
-            key={i}
-            className="snake"
+            key={`${segment.x}-${segment.y}`} // use a unique and stable key
+            className={styles.cell + " " + styles.segment}
             style={{
               left: `${segment.x * CELL_SIZE}px`,
               top: `${segment.y * CELL_SIZE}px`,
             }}
           />
         ))}
-        {/* Render the food */}
         <div
-          className="food"
+          className={styles.cell + " " + styles.food}
           style={{
             left: `${state.food.x * CELL_SIZE}px`,
             top: `${state.food.y * CELL_SIZE}px`,
           }}
         />
+        <div className={styles.score}>Score: {state.score}</div>
+        <div className={styles.controls}>
+          <Button onClick={() => handleClick("UP")}>Up</Button>
+          <Button onClick={() => handleClick("DOWN")}>Down</Button>
+          <Button onClick={() => handleClick("LEFT")}>Left</Button>
+          <Button onClick={() => handleClick("RIGHT")}>Right</Button>
+        </div>
       </div>
-      {/* Render the buttons */}
-      <div className="buttons">
-        <Button dir="UP" onClick={handleClick} />
-        <Button dir="DOWN" onClick={handleClick} />
-        <Button dir="LEFT" onClick={handleClick} />
-        <Button dir="RIGHT" onClick={handleClick} />
-      </div>
-      {/* Render the menu */}
-      {state.gameOver && <Menu score={state.score} onReset={resetGame} />}
-    </div>
+    </>
   );
-}
-
-// export default Home;
+  
+      

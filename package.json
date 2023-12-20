@@ -50,6 +50,14 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "*"
+    "@babel/plugin-proposal-private-property-in-object": "*",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-react": "^7.23.3"
+  },
+  "compilerOptions": {
+    "jsx": "react"
+  },
+  "babel": {
+    "presets": ["@babel/preset-react", "@babel/preset-env"]
   }
 }
