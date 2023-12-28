@@ -1,7 +1,7 @@
 import React from "react";
 
 class Tile extends React.Component{
-    conbstructor(props){
+    constructor(props){
         super(props);
         this.state = {
             style:{
@@ -10,6 +10,13 @@ class Tile extends React.Component{
             }
         }
     }
+
+    static getDerivedStateFromProps(props, state){
+        return {
+            style:{backgroundColor: props.color}
+        }
+    }
+
     render(){
         return <div className="gmae-tile" style={this.state.style}>
 
