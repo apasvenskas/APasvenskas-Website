@@ -1,7 +1,6 @@
 import React from "react";
 import Tile from "./tile";
 import './snakeGame.css';
-// import Snake from "./snake";
 
 let tcount = 0;
 
@@ -9,7 +8,7 @@ class Game extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            gmaeMatrix:[],
+            gameMatrix:[],
             snakeList:[[1,1], [1,2], [2,2]],
             incriment:[1,0],
             gameOver: false,
@@ -32,7 +31,7 @@ class Game extends React.Component{
         body.unshift([newx%19, newy%19]);
         
         // Use a different name for the second variable
-        let newx2 = (this.state.snakeList[0][0] + newInc) 
+        let newx2 = (this.state.snakeList[0][0] + newInc[0]) 
         let newy2 = (this.state.snakeList[0][1] + newInc[1]);
         if(this.state.snakeList.filter((i) => {return i[0] == i[0] == newx2%19 && i[i] == newy2%19}).length 
         || newx2 < 0 || newx2 > 18 || newy2 < 0 || newy2 > 18) this.setState({gameOver: true})
@@ -78,11 +77,11 @@ class Game extends React.Component{
             let x=i[0], y=i[1];
             temp[x][y] = 1;
         })
-        return ({gmaeMatrix:temp});
+        return ({gameMatrix:temp});
     }
 
     renderGameMatrix = () => {
-        return this.state.gmaeMatrix.map((row) => {
+        return this.state.gameMatrix.map((row) => {
             return row.map((t) => {
                 if(t==2) return <Tile color = {this.state.isFoodVisable?"red" : "lightgrey"} />
                 return <Tile color={t?"blue":"lightgrey"}/>

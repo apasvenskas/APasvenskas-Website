@@ -6,7 +6,7 @@ import { Experience } from "./components/experience";
 import { Projects } from "./components/projects";
 import { Contacts } from "./components/contacts";
 import { AboutMe } from "./components/about-me";
-import { Home } from "./components/home";
+import  Home  from "./components/home";
 
 function App() {
   return (
