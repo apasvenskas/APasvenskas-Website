@@ -2,21 +2,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Button } from "@material-ui/core";
-import  Game  from "./Game/snakeGame"; // Use the curly braces to import the named export
+import Game from "./Game/snakeGame";
+import "./Game/snakeGame.css";
+import NewWindow from "react-new-window";
 // import styles from './home.module.css';
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showGame: false // initially hide the game
+      showGame: false,
     };
   }
 
   // toggle the game visibility
   handleClick = () => {
     this.setState((prevState) => ({
-      showGame: !prevState.showGame
+      showGame: !prevState.showGame,
     }));
   };
 
@@ -24,18 +26,16 @@ class Home extends React.Component {
     return (
       <div>
         <button onClick={this.handleClick}>Play Snake Game</button>
-        {this.state.showGame && <Game />} 
+        {this.state.showGame && (
+          <NewWindow>
+            <Game />
+          </NewWindow>
+        )}
       </div>
     );
   }
 }
 
-// render the button component to the root element
 ReactDOM.render(<Button />, document.getElementById("root"));
 
-// export the button component as default
 export default Home;
-
-
-  
-      

@@ -1,11 +1,14 @@
 .game-tile{
-    width: 26px;
-    height: 26px;
+    width: 5vw;
+    height: 5vw;
 }
 
-.game-container{
-    width: 500px;
+.game-container {
+    width: 100%;
     aspect-ratio: 1;
     margin: auto;
     text-align: center;
-}
+    display: grid;
+    grid-template-columns: repeat(19, 1fr);
+    grid-template-rows: repeat(19, 1fr);
+  }
