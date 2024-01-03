@@ -18,7 +18,11 @@ class Tile extends React.Component{
     }
 
     render(){
-        return <div className="gmae-tile" style={this.state.style}>
+        return <div className="game-tile" style={{
+           flex: 1,
+           backgroundColor: this.props.color,
+           border: "1px solid black", 
+        }}>
 
         </div>
     }
