@@ -24,8 +24,10 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleClick}>Play Snake Game</button>
+      <div className="game">
+        <h1>Games</h1>
+        <p className="gameDescription">A simple snake game that will open in a new window for desktop browser.</p>
+        <button className="snakeGame" onClick={this.handleClick}>Play Snake Game</button>
         {this.state.showGame && (
           <NewWindow>
             <Game />

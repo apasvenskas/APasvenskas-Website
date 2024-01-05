@@ -30,7 +30,6 @@ class Game extends React.Component{
         let newy = (this.state.snakeList[0][1] + newInc[1]);
         body.unshift([newx%19, newy%19]);
         
-        // Use a different name for the second variable
         let newx2 = (this.state.snakeList[0][0] + newInc[0]) 
         let newy2 = (this.state.snakeList[0][1] + newInc[1]);
         if(this.state.snakeList.filter((i) => {return i[0]  === newx2%19 && i[i] === newy2%19}).length 
@@ -39,21 +38,21 @@ class Game extends React.Component{
             let food = this.state.food;
             let ifv = this.state.isFoodVisable;
             if(tcount === 39){
-                food = this.generateFood();
+                food = this.generateFood;
                 ifv = true;
             }
             if(!(body[0][0] === food[0] && body[0][1] === food[1])) body.pop();
             else ifv = false;
             this.setState({snakeList: body, food: food, isFoodVisable: ifv});
         }
-    }
-
+    }    
 
     componentDidMount(){
         this._isMounted = true;
         window.fnInterval = setInterval(this.gameTick, 100);
         const keyboard = document.querySelector('body'); 
         keyboard.addEventListener('keydown', e => {
+            e.preventDefault();
             let newInc = this.state.incriment;
             if(e.key === 'ArrowUp') newInc=[-1,0];
             else if(e.key === 'ArrowDown') newInc = [1, 0];
@@ -61,7 +60,7 @@ class Game extends React.Component{
             else if(e.key === 'ArrowRight') newInc = [0, 1];
             if(newInc[0] + this.state.incriment[0] === 0 && newInc[1] + this.state.
             incriment[1] === 0) return;
-            this.setState({incriment: newInc})
+            this.setState(prevState => ({incriment: newInc}))
         })
     }
 
