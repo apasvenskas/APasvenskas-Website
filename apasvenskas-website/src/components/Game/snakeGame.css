@@ -1,14 +1,21 @@
+/* snakeGame.css file */
 .game-tile{
-    width: 5vw;
-    height: 5vw;
+    width: calc(50vw / 19); 
+    height: calc(50vh / 19); 
 }
 
 .game-container {
-    width: 100%;
-    aspect-ratio: 1;
+    width: 50vw; 
+    height: 50vh;
     margin: auto;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(19, 1fr);
-    grid-template-rows: repeat(19, 1fr);
+    grid-template-columns: repeat(19, 1fr); 
+    grid-template-rows: repeat(19, 1fr); 
+    overflow: hidden;
+    place-items: center;
   }
+
+.barrier {
+    background-color: #0e12c2; 
+}
