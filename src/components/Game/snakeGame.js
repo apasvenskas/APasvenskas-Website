@@ -53,17 +53,18 @@ class Game extends React.Component{
         const keyboard = document.querySelector('body'); 
         keyboard.addEventListener('keydown', e => {
             e.preventDefault();
+            window.scrollTo(0, 0);
             let newInc = this.state.incriment;
-            if(e.key === 'ArrowUp') newInc=[-1,0];
-            else if(e.key === 'ArrowDown') newInc = [1, 0];
-            else if(e.key ==='ArrowLeft') newInc = [0, -1];
-            else if(e.key === 'ArrowRight') newInc = [0, 1];
+            if(e.keyCode === 38) newInc=[-1,0]; // Up
+            else if(e.keyCode === 40) newInc = [1, 0]; // Down
+            else if(e.keyCode === 37) newInc = [0, -1]; // Left
+            else if(e.keyCode === 39) newInc = [0, 1]; // Right
             if(newInc[0] + this.state.incriment[0] === 0 && newInc[1] + this.state.
             incriment[1] === 0) return;
             this.setState(prevState => ({incriment: newInc}))
         })
     }
-
+   
     static getDerivedStateFromProps(props, state){
         let temp = [];
         for(let i=0; i<19; i++){
