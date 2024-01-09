@@ -5,11 +5,11 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #4f4d4d;
+    background-color: white;
   }
   
   .score {
-    color: white;
+    color: rgb(6, 6, 6);
     font-size: 2rem;
     margin-bottom: 1rem;
   }
