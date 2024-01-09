@@ -65,15 +65,19 @@ export default function Game() {
     switch(code){
         case "ArrowUp":
             if(direction !== "DOWN") setDirection("UP");
+            e.preventDefault();
             break;
         case "ArrowDown":
             if(direction !== "UP") setDirection("DOWN");
+            e.preventDefault();
             break;
          case "ArrowLeft":
             if(direction !== "RIGHT") setDirection("LEFT");
+            e.preventDefault();
             break;
          case "ArrowRight":
             if(direction !== "LEFT") setDirection("RIGHT");
+            e.preventDefault();
             break;
         //  default:
         //     console.error("Invalid code: " + code);

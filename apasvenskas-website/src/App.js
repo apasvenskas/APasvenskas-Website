@@ -6,6 +6,7 @@ import { Experience } from "./components/experience";
 import { Projects } from "./components/projects";
 import { Contacts } from "./components/contacts";
 import { AboutMe } from "./components/about-me";
+import Game from "./components/Game/snakeGame";
 import  Home  from "./components/home";
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/about-me" element={<AboutMe />} />
             <Route path="/contacts" element={<Contacts />} />
+            <Route path="/game" element={<Game />} />
           </Routes>
         </header>
       </div>
