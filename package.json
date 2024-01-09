@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "@react-email/button": "0.0.11",
+    "emailjs-com": "^3.2.0",
+    "react-mail": "^0.0.1",
+    "react-mailto": "^0.4.0",
     "react-router-dom": "^6.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "eslint-plugin-react": "^7.33.2"
   }
 }
