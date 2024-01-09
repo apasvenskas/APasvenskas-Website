@@ -1,121 +1,102 @@
 import React from "react";
-import Tile from "./tile";
-import "./snakeGame.css";
+import { useState, useEffect } from "react";
+import './snakeGame.css'; 
 
-let tcount = 0;
+export default function Game() {
+  let totalGridSize = 20;
 
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gameMatrix: [],
-      snakeList: [
-        [1, 1],
-        [1, 2],
-        [2, 2],
-      ],
-      increment: [1, 0], // fixed typo
-      gameOver: false,
-      food: [15, 15],
-      isFoodVisable: true,
-    };
-  }
+  let initialSnakePosition = [
+    { x: totalGridSize / 2, y: totalGridSize / 2 },
+    { x: totalGridSize / 2 + 1, y: totalGridSize / 2 },
+  ];
+  const [food, setFood] = useState({ x: 5, y: 5 });
+  const [snake, setSnake] = useState(initialSnakePosition);
+  const [direction, setDirection] = useState("LEFT");
 
-  generateFood = () => {
-    return [parseInt(Math.random() * 18), parseInt(Math.random() * 18)];
-  };
+  function renderBoard() {
+    let cellArray = [];
+    for (let row = 0; row < totalGridSize; row++) {
+      for (let col = 0; col < totalGridSize; col++) {
+        let className = "cell";
+        let isFood = food.x === row && food.y === col;
+        let isSnake = snake.some((ele) => ele.x === row && ele.y === col);
+        let isSnakeHead = snake[0].x === row && snake[0].y === col;
 
-  gameTick = () => {
-    let body = [];
-    this.state.snakeList.map((i) => body.push(i));
-    tcount = (tcount + 1) % 40;
-    let newInc = this.state.increment; // fixed typo
-    let newx = this.state.snakeList[0][0] + newInc[0];
-    let newy = this.state.snakeList[0][1] + newInc[1];
-    if (newx < 0) newx += 19;
-    if (newx > 18) newx -= 19;
-    if (newy < 0) newy += 19;
-    if (newy > 18) newy -= 19;
-    body.unshift([newx, newy]);
-
-    let newx2 = this.state.snakeList[0][0] + newInc[0];
-    let newy2 = this.state.snakeList[0][1] + newInc[1];
-    if (newx2 < 0) newx2 += 19;
-    if (newx2 > 18) newx2 -= 19;
-    if (newy2 < 0) newy2 += 19;
-    if (newy2 > 18) newy2 -= 19;
-    if (
-      this.state.snakeList.filter((i) => {
-        return i[0] === newx2 && i[1] === newy2; // fixed typo
-      }).length
-    )
-      this.setState({ gameOver: true });
-    else {
-      let food = this.state.food;
-      let ifv = this.state.isFoodVisable;
-      if (tcount === 39) {
-        food = this.generateFood(); // added parentheses
-        ifv = true;
+        if (isFood) {
+          className = className + " food";
+        }
+        if (isSnake) {
+          className = className + " snake";
+        }
+        if (isSnakeHead) {
+          className = className + " snakeHead";
+        }
+        let cell = <div className={className} key={`${row} - ${col}`}></div>;
+        cellArray.push(cell);
       }
-      if (!(body[0][0] === food[0] && body[0][1] === food[1])) body.pop();
-      else ifv = false;
-      this.setState({ snakeList: body, food: food, isFoodVisable: ifv });
     }
-  };
-
-  componentDidMount() {
-    window.fnInterval = setInterval(this.gameTick, 100);
-    const keyboard = document.querySelector("body");
-    keyboard.addEventListener("keydown", this.handleKeyDown);
+    return cellArray;
   }
 
-  componentWillUnmount() {
-    clearInterval(window.fnInterval);
-    const keyboard = document.querySelector("body");
-    keyboard.removeEventListener("keydown", this.handleKeyDown);
-  }
-
-  handleKeyDown = (e) => {
-    e.preventDefault();
-    window.scrollTo(0, 0);
-    let newInc = this.state.increment; 
-    if (e.key === "ArrowUp" || e.key === "w") newInc = [-1, 0]; // Up
-    else if (e.key === "ArrowDown" || e.key === "s") newInc = [1, 0]; // Down
-    else if (e.key === "ArrowLeft" || e.key === "a") newInc = [0, -1]; // Left
-    else if (e.key === "ArrowRight" || e.key === "d") newInc = [0, 1]; // Right
-    if (
-      newInc[0] + this.state.increment[0] === 0 &&
-      newInc[1] + this.state.increment[1] === 0
-    )
-      return;
-    this.setState((prevState) => ({ increment: newInc }));
-  };
-
-  static getDerivedStateFromProps(props, state) {
-    let temp = [];
-    // changed for loop to for...of loop
-    for (let i of state.snakeList) {
-      temp[i[0]] = temp[i[0]] || [];
-      temp[i[0]][i[1]] = true;
+  function updateGame() {
+    let newSnake = [...snake];
+    switch (direction) {
+      case "LEFT":
+        newSnake.unshift({ x: newSnake[0].x, y: newSnake[0].y - 1 });
+        break;
+      case "RIGHT":
+        newSnake.unshift({ x: newSnake[0].x, y: newSnake[0].y + 1 });
+        break;
+      case "UP":
+        newSnake.unshift({ x: newSnake[0].x - 1, y: newSnake[0].y });
+        break;
+      case "DOWN":
+        newSnake.unshift({ x: newSnake[0].x + 1, y: newSnake[0].y });
+        break;
+      default: //can active defaultto get rid of the warning
+     // do nothing
     }
-    return { gameMatrix: temp };
+    newSnake.pop();
+    setSnake(newSnake);
   }
 
-  render() {
-    return (
-      <div className="game">
-        <div className="game-board">
-          {this.state.gameMatrix.map((i, index) => (
-            <div className="board-row" key={index}>
-              {i.map((j, index) => (
-                <Tile value={j} key={index} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  function updateDirection (e){
+    let code = e.code;
+    switch(code){
+        case "ArrowUp":
+            if(direction !== "DOWN") setDirection("UP");
+            break;
+        case "ArrowDown":
+            if(direction !== "UP") setDirection("DOWN");
+            break;
+         case "ArrowLeft":
+            if(direction !== "RIGHT") setDirection("LEFT");
+            break;
+         case "ArrowRight":
+            if(direction !== "LEFT") setDirection("RIGHT");
+            break;
+        //  default:
+        //     console.error("Invalid code: " + code);
+        //     break;
+    }
 }
 
-export default Game;
+  useEffect(() => {
+    let interval = setInterval(updateGame, 500);
+    return () => clearInterval(interval, updateGame);
+  });
+
+   useEffect(() => {
+        document.addEventListener("keydown", updateDirection);
+        return () => clearInterval("keydown", updateDirection);
+    });
+
+  return (
+    <div className="container">
+      <div className="score">
+        Score : <span>30</span>
+      </div>
+      <div className="board">{renderBoard()}</div>
+    </div>
+  );
+}
