@@ -12,6 +12,7 @@ export default function Game() {
   const [food, setFood] = useState({ x: 5, y: 5 });
   const [snake, setSnake] = useState(initialSnakePosition);
   const [direction, setDirection] = useState("LEFT");
+  const [score, setScore] = useState(0); 
 
   function renderBoard() {
     let cellArray = [];
@@ -38,8 +39,31 @@ export default function Game() {
     return cellArray;
   }
 
+  function gameOver(){
+    setSnake(initialSnakePosition)
+    setScore(0)
+  }
+
   function updateGame() {
+
+    if(
+  snake[0].x < 0 || 
+  snake[0].x > 20 || 
+  snake[0].y < 0 || 
+  snake[0].y > 20
+  ){ // <-- add a closing parenthesis here
+  gameOver()
+    return
+  }
+    let isBit = snake.slice(1).some((ele) => ele.x === snake[0].x && ele.y === snake[0].y);
+
+    if(isBit){
+      gameOver()
+      return
+    }
+
     let newSnake = [...snake];
+
     switch (direction) {
       case "LEFT":
         newSnake.unshift({ x: newSnake[0].x, y: newSnake[0].y - 1 });
@@ -56,7 +80,15 @@ export default function Game() {
       default: //can active defaultto get rid of the warning
      // do nothing
     }
-    newSnake.pop();
+    let isAteFood = newSnake[0].x === food.x && newSnake[0].y === food.y;
+
+    if(isAteFood){
+      setScore((prev) => prev + 1);
+      renderFood();
+    } else {
+      newSnake.pop()
+    }
+
     setSnake(newSnake);
   }
 
@@ -85,20 +117,28 @@ export default function Game() {
     }
 }
 
+  function renderFood(){
+    let xPosition = Math.floor(Math.random() * totalGridSize);
+    let yPosition = Math.floor(Math.random() * totalGridSize);
+
+    setFood({ x: xPosition, y: yPosition })
+  }
+
   useEffect(() => {
-    let interval = setInterval(updateGame, 500);
+    let interval = setInterval(updateGame, 350); // snake speed 
     return () => clearInterval(interval, updateGame);
   });
 
+
    useEffect(() => {
         document.addEventListener("keydown", updateDirection);
-        return () => clearInterval("keydown", updateDirection);
+        return () => clearInterval("keydown", updateDirection); // this line for better performance
     });
 
   return (
     <div className="container">
       <div className="score">
-        Score : <span>30</span>
+        Score : <span>{score}</span>
       </div>
       <div className="board">{renderBoard()}</div>
     </div>

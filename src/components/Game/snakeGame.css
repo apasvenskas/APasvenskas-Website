@@ -12,6 +12,8 @@
     color: rgb(6, 6, 6);
     font-size: 2rem;
     margin-bottom: 1rem;
+    margin-top: 3.5%;
+    font-family: Copperplate;
   }
   
   .board {
@@ -21,6 +23,7 @@
     display: flex;
     flex-wrap: wrap;
     background-color: #bebaba;
+    margin-bottom: 2.5%;
   }
   
   .cell {
@@ -29,14 +32,17 @@
   }
   
   .food {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.46);
+    border-radius: 50%;
   }
   
   .snake {
     background-color: green;
+    border-radius: 5%;
   }
   
   .snakeHead {
-    background-color: lime;
+    background-color: rgb(74, 119, 74);
+    border-radius: 30%;
   }
   
