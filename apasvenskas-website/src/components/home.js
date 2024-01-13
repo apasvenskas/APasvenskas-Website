@@ -15,7 +15,8 @@ function Home(props) {
       <h1>Games</h1>
       <p className="gameDescription">
         A simple snake game that will open in a new window for desktop browser.
-      </p><button onClick={openGame}>
+      </p>
+      <button onClick={openGame} className="playGame">
         Play Snake Game
       </button>
     </div>
