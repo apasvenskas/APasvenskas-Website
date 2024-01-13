@@ -51,7 +51,7 @@ export default function Game() {
   snake[0].x > 20 || 
   snake[0].y < 0 || 
   snake[0].y > 20
-  ){ // <-- add a closing parenthesis here
+  ){ 
   gameOver()
     return
   }
