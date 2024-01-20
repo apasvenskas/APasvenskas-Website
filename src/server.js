@@ -23,9 +23,9 @@ server.use(express.json())
 server.get('/', function (req, res){
   res.send('Hello, this is the default page of my server.');
 })
-
+// for the backend server run the following command: node src/server.js
 server.get('/contacts', (req, res) => {
-  // post user data
+  // het user data
   res.json(testData)
 })
 
