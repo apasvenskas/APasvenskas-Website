@@ -1,13 +1,13 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter, NavLink, Routes, Route, Link } from "react-router-dom";
-import { Education } from "./components/education";
-import { Experience } from "./components/experience";
-import { Projects } from "./components/projects";
-import  Contacts  from "./components/contacts";
-import { AboutMe } from "./components/about-me";
-import Game from "./components/Game/snakeGame";
-import  Home  from "./components/home";
+import { Education } from "../components/education";
+import { Experience } from "../components/experience";
+import { Projects } from "../components/projects";
+import  Contacts  from "../components/contacts";
+import { AboutMe } from "../components/about-me";
+import Game from "../components/Game/snakeGame";
+import  Home  from "../components/home";
 
 function App() {
   return (
