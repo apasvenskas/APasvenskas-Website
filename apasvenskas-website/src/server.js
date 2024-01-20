@@ -15,7 +15,7 @@
 const express = require("express");
 const server = express()
 const HOST = 'Localhost'
-const PORT = 3003
+const PORT = 3001
 const testData = require('../testData')
 
 server.use(express.json())
