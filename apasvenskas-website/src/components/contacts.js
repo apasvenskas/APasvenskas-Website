@@ -35,7 +35,13 @@ function Contacts(){
       })
   }
   return(
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
+      <h1>Contacts</h1>
+      <div className="contacts">
+        <p>
+          Please leave your contact information below name, email, and phone. I will contact you ass soon as posible. 
+        </p>
+      </div>
       <input 
         type="text"
         name="name"
@@ -57,7 +63,7 @@ function Contacts(){
         placeholder="Enter Your Phone #"
         onChange={handlePhoneChange}
       />
-      <button type="submit">Submit</button>
+      <button className="submit" type="submit">Submit</button>
     </form>
   )
 }
