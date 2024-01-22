@@ -39,9 +39,9 @@ function App() {
               such as Thunk.
             </p>
           </div>
-          <nav>
-            <NavLink id="home" to="/home">
-              Home
+          <nav className="nav">
+            <NavLink id="games" to="/home">
+              Games
             </NavLink>
             <NavLink id="education" to="/education">
               Education

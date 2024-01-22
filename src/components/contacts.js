@@ -5,6 +5,7 @@ function Contacts(){
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
+  const [status, setStatus] = useState('')
 
   const handleNameChange = e => {
     setName(e.target.value)
@@ -29,9 +30,14 @@ function Contacts(){
     axios.post('http://localhost:3001/contacts', newContact)
       .then(res => {
         console.log('second', res.data)
+        setStatus('success')
+        setName('')
+        setEmail('')
+        setPhone('')
       })
       .catch(err => {
         console.error(err)
+        setStatus('error')
       })
   }
   return(
@@ -46,24 +52,28 @@ function Contacts(){
         type="text"
         name="name"
         value={name}
-        placeholder="Enter Your First and Last Name"
+        placeholder="First and Last Name"
         onChange={handleNameChange}
+        required
       />
       <input 
         type="text"
         name="email"
         value={email}
-        placeholder="Enter Your Email"
+        placeholder="Email"
         onChange={handleEmailChange}
+        required
       />
       <input 
         type="text"
         name="phone"
         value={phone}
-        placeholder="Enter Your Phone #"
+        placeholder="Phone #"
         onChange={handlePhoneChange}
       />
       <button className="submit" type="submit">Submit</button>
+      {status === 'success' && <p style={{color: 'green'}}>Your contacts have been added, I will contact you as soon posible.</p>}
+      {status === 'error' && <p style={{color: 'red'}}>Somthing went wrong!!</p>}
     </form>
   )
 }

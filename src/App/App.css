@@ -152,6 +152,16 @@ nav a:hover {
   background-color: #b2beb5; 
  }
 
+ @media screen and (max-width: 700px) {
+  .nav {
+    flex-direction: column; 
+    align-items: center; 
+  }
+  .nav a:not(:last-child) {
+    margin-bottom: 10px; 
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
