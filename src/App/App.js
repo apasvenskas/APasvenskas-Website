@@ -32,11 +32,7 @@ function App() {
           <div className="introduction">
             <h3>Introduction</h3>
             <p className="introductoryParagraph">
-              Introductory text goes here: For example: Hello my name is Audrius
-              and I am a software developer. My expertice and knowledge are
-              primarly with HTML, CSS, Java Script, React, and Node.js. I am also
-              proficient with using Redux and some other tools that come with it
-              such as Thunk.
+            Welcome to my profile website, where I showcase some of my software/web development skills. I built this site using: CSS, React, Node.js.You can explore the following tabs to learn more about me and my projects. Games: Here you can play some games that I coded using React and CSS, such as Snake Game. Previous Projects: Here you can find links to some of my previous projects. Contacts: Here you can leave your contact info and it will be stored in the SQL database, and I will get in touch with you as soon as possible. (I am working on an automated email feature that will send me your contacts in an email.)
             </p>
           </div>
           <nav className="nav">
