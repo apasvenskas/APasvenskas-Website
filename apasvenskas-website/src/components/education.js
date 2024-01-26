@@ -10,9 +10,8 @@ export function Education() {
         <div className="header">
           <h3>Bloomtech</h3>
           <p>
-          I completed a Full Stack Web Development program at Bloomtech, where I learned both front end and back end web development. The program taught me HTML, CSS, React libraries, Node.js, and SQL, along with many other tools and dependencies, such as knex.js, Redux, Auth0, and more. Furthermore, a large part of the course was dedicated to Algorithms, Big-O Notation, and Data Structures. Here is a link to the certificate .  
+          I completed a Full Stack Web Development program at Bloomtech, where I learned both front end and back end web development. The program taught me HTML, CSS, React libraries, Node.js, and SQL, along with many other tools and dependencies, such as knex.js, Redux, Auth0, and more. Furthermore, a large part of the course was dedicated to Algorithms, Big-O Notation, and Data Structures.
           </p>
-          <Link to="https://app.bloomtech.com/certificate">View certificate</Link>
         </div>
         <div className="body">
           <h3>Bachelors Degree</h3>
