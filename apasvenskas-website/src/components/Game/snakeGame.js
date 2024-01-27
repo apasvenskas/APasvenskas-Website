@@ -138,7 +138,7 @@ export default function Game() {
   return (
     <div className="container">
       <div className="score">
-        Score : <span>{score}</span>
+        Score = <span>{score}</span>
       </div>
       <div className="board">{renderBoard()}</div>
     </div>
