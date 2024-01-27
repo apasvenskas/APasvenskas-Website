@@ -7,7 +7,10 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: white;
+    background: 
+  linear-gradient(rgba(197, 173, 136, 0.8), rgba(197, 173, 136, 0.8)),
+  url("../../../public/Background.jpg") no-repeat center center fixed;
+background-size: cover;
   }
   
   .score {
