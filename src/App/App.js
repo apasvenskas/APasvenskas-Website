@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter, NavLink, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 import { Education } from "../components/education";
 import { Experience } from "../components/experience";
 import { Projects } from "../components/projects";
@@ -59,6 +59,10 @@ function App() {
               soon as possible. (I am working on an automated email feature that
               will send me your contacts in an email.)
             </p>
+            <a href="https://docs.google.com/document/d/1yXMdbjNGneWkooiBlTQNsmGM1zFRL0NdebBdN87TOm4/edit?usp=sharing" 
+              target="_blank" rel="noopener noreferrer" download className="btn-download">
+              Download <span className="bolder">CV</span>
+            </a>
           </div>
           <nav className="nav">
             <NavLink id="games" to="/home">

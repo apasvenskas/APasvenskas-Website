@@ -77,8 +77,7 @@ export default function Game() {
       case "DOWN":
         newSnake.unshift({ x: newSnake[0].x + 1, y: newSnake[0].y });
         break;
-      default: //can active defaultto get rid of the warning
-     // do nothing
+      default: 
     }
     let isAteFood = newSnake[0].x === food.x && newSnake[0].y === food.y;
 
@@ -111,9 +110,9 @@ export default function Game() {
             if(direction !== "LEFT") setDirection("RIGHT");
             e.preventDefault();
             break;
-        //  default:
-        //     console.error("Invalid code: " + code);
-        //     break;
+         default:
+            console.error("Invalid code: " + code);
+            break;
     }
 }
 
@@ -132,7 +131,7 @@ export default function Game() {
 
    useEffect(() => {
         document.addEventListener("keydown", updateDirection);
-        return () => clearInterval("keydown", updateDirection); // this line for better performance
+        return () => clearInterval("keydown", updateDirection); 
     });
 
   return (

@@ -50,4 +50,13 @@ background-size: cover;
     background-color: rgb(74, 119, 74);
     border-radius: 30%;
   }
+
+  @media (max-width: 505px) {
+    .board {
+      flex-direction: column; 
+      align-items: center; 
+      max-width: 90%;
+      max-height: 60%;
+    }
+  }
   
