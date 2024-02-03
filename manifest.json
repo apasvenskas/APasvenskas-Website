@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "Audrius Pasvenskas Website",
+    "short_name": "Audrius",
+    "icons": [
+      {
+        "src": "%PUBLIC_URL%/favicon.ico",
+        "type": "image/x-icon",
+        "sizes": "16x16"
+      },
+      {
+        "src": "%PUBLIC_URL%/logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "%PUBLIC_URL%/logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+  }
+  
