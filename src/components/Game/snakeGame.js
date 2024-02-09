@@ -20,8 +20,10 @@ export default function Game() {
       for (let col = 0; col < totalGridSize; col++) {
         let className = "cell";
         let isFood = food.x === row && food.y === col;
-        let isSnake = snake.some((ele) => ele.x === row && ele.y === col);
-        let isSnakeHead = snake[0].x === row && snake[0].y === col;
+        // check if snake is defined and not empty
+        let isSnake = snake && snake.length > 0 && snake.some((ele) => ele.x === row && ele.y === col);
+        // check if snake is defined and not empty
+        let isSnakeHead = snake && snake.length > 0 && snake[0].x === row && snake[0].y === col;
 
         if (isFood) {
           className = className + " food";
@@ -38,6 +40,7 @@ export default function Game() {
     }
     return cellArray;
   }
+
 
   function gameOver(){
     setSnake(initialSnakePosition)
@@ -123,16 +126,23 @@ export default function Game() {
     setFood({ x: xPosition, y: yPosition })
   }
 
-  useEffect(() => {
-    let interval = setInterval(updateGame, 350); // snake speed 
-    return () => clearInterval(interval, updateGame);
-  });
-
-
    useEffect(() => {
         document.addEventListener("keydown", updateDirection);
         return () => clearInterval("keydown", updateDirection); 
     });
+
+    useEffect(() => {
+      let interval = setInterval(() => {
+        updateGame(); // this function sets x and y
+        // this function runs after updateGame is done
+        let x = snake[0].x;
+        let y = snake[0].y;
+        console.log(x); 
+        console.log(y); // the latest value of y
+      }, 400); // snake speed 
+      return () => clearInterval(interval);
+    });
+    
 
   return (
     <div className="container">
@@ -140,6 +150,26 @@ export default function Game() {
         Score = <span>{score}</span>
       </div>
       <div className="board">{renderBoard()}</div>
+      <footer>
+      <div className="keypad">
+      <button id="up" onClick={() => setDirection("UP")}>
+          UP
+        </button>
+        <div>
+        <button id="left" onClick={() => setDirection("LEFT")}>
+          LEFT
+        </button>
+        <button id="right" onClick={() => setDirection("RIGHT")}>
+          RIGHT
+        </button>
+        </div>
+        <div>
+        <button id="down" onClick={() => setDirection("DOWN")}>
+          DOWN
+        </button>
+        </div>
+      </div>
+      </footer>
     </div>
   );
 }
