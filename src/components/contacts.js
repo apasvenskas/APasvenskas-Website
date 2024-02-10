@@ -47,6 +47,7 @@ function Contacts(){
         <p>
           Please leave your contact information below name, email, and phone. I will contact you ass soon as posible. 
         </p>
+        <p className="note">(Note: with the current deployment the backend server is not deployd yet, so the submit button is not going to work. However, in localhost it works well, it is just not deployed to the Firebase yet. )</p>
       </div>
       <input 
         type="text"

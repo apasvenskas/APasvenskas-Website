@@ -159,13 +159,16 @@ nav a:hover {
 
  /* Projects */
 
+ .stock-chart{
+  margin-top: 8%;
+ }
+
  span{
   margin: 1%;
   border: 1px solid rgb(4, 4, 4);
   border-radius: 10px;
   padding: .3%;
   background-color: hwb(14 49% 40%);
-  /* background-color: #849269; */
  }
 
  .span{
@@ -201,6 +204,10 @@ nav a:hover {
 
  .submit:hover {
   background-color: #b2beb5; 
+ }
+
+ .note{
+  color: red;
  }
 
  @media screen and (max-width: 700px) {

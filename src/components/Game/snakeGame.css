@@ -18,6 +18,12 @@ background-size: cover;
     url("../../../public/Background.jpg") no-repeat center center fixed;
   background-size: cover;
   }
+
+  h3{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
   
   .score {
     color: rgb(6, 6, 6);

@@ -146,8 +146,9 @@ export default function Game() {
 
   return (
     <div className="container">
+      <h3>To play the following game scroll down. For PC/MAC preferably use keyboard arrows. For portable devices such as phones tablest there is a keypad at the bottom of the page that can be used for controling the snake.</h3>
       <div className="score">
-        Score = <span>{score}</span>
+        <span>Score:{score}</span>
       </div>
       <div className="board">{renderBoard()}</div>
       <footer>
