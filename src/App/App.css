@@ -33,6 +33,11 @@ background-size: cover;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  transition: transform 0.3s;
+}
+
+.LinkedIn:hover {
+  transform: scale(1.1);
 }
 
 .github {
@@ -41,6 +46,11 @@ background-size: cover;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
+  transition: transform 0.3s;
+}
+
+.github:hover {
+  transform: scale(1.1);
 }
 
 svg{
@@ -89,15 +99,17 @@ nav a {
   border: 2px solid black; 
   border-radius: 10px; 
   margin: 0 10px; 
+  margin-bottom: 2%; 
+  /* will need to adjust the margin bottom and add auto scroll bottom functionality */
 }
 
 nav a:hover {
-  background-color: #b2beb5; 
+  background-color: #99837d; 
  }
 
  .button {
     padding-top: 5%;
-    border: 1px solid #282c34;
+    border: 2px solid #282c34;
     border-radius: 10px; 
     text-align: center;
     text-decoration: none;
@@ -109,10 +121,6 @@ nav a:hover {
     margin-bottom: 5%;
     color: black; 
     background-color: transparent; 
- }
-
- .button:hover {
-  background-color: #b2beb5; 
  }
 
  /* about-me */
@@ -154,10 +162,14 @@ nav a:hover {
  }
 
  .playGame:hover {
-  background-color: #b2beb5; 
+  background-color: #99837d; 
  }
 
  /* Projects */
+
+ .button:hover {
+  background-color: #99837d; 
+ }
 
  .stock-chart{
   margin-top: 8%;
@@ -165,10 +177,10 @@ nav a:hover {
 
  span{
   margin: 1%;
-  border: 1px solid rgb(4, 4, 4);
+  border: 1.5px solid rgb(4, 4, 4);
   border-radius: 10px;
   padding: .3%;
-  background-color: hwb(14 49% 40%);
+  background-color: #99837d;
  }
 
  .span{
@@ -179,6 +191,16 @@ nav a:hover {
   margin-left: 5%;
   margin-right: 5%;
  }
+
+ .img {
+  transition: transform 0.3s;
+  margin: 2%;
+  border-radius: 10px;
+}
+
+.img:hover {
+  transform: scale(1.5);
+}
 
  /* contacts */
 
@@ -203,7 +225,7 @@ nav a:hover {
  }
 
  .submit:hover {
-  background-color: #b2beb5; 
+  background-color: #99837d; 
  }
 
  .note{
