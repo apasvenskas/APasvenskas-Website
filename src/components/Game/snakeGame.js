@@ -155,7 +155,7 @@ export default function Game() {
       <button id="up" onClick={() => setDirection("UP")}>
           UP
         </button>
-        <div>
+        <div className="leftRight">
         <button id="left" onClick={() => setDirection("LEFT")}>
           LEFT
         </button>
@@ -163,11 +163,9 @@ export default function Game() {
           RIGHT
         </button>
         </div>
-        <div>
         <button id="down" onClick={() => setDirection("DOWN")}>
           DOWN
         </button>
-        </div>
       </div>
       </footer>
     </div>
