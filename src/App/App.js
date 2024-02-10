@@ -61,7 +61,7 @@ function App() {
             </p>
             <a href="https://docs.google.com/document/d/1yXMdbjNGneWkooiBlTQNsmGM1zFRL0NdebBdN87TOm4/edit?usp=sharing" 
               target="_blank" rel="noopener noreferrer" download className="btn-download">
-              Download <span className="bolder">CV</span>
+              Download CV
             </a>
           </div>
           <nav className="nav">
