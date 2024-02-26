@@ -1,0 +1,122 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.github {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+svg{
+  display: flex;
+  align-items: flex-start;
+}
+
+.App-link {
+  color: black;
+}
+
+.introductoryParagraph {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+nav {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  justify-content: center; 
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  padding: .3%;
+  border: 2px solid black; 
+  border-radius: 10px; 
+  margin: 0 10px; 
+}
+
+nav a:hover {
+  background-color: #b2beb5; 
+ }
+
+ .button {
+    padding-top: 5%;
+    border: 1px solid #282c34;
+    border-radius: 10px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: .3%;
+    margin-bottom: 5%;
+    color: black; 
+    background-color: #ebefec;
+ }
+
+ .button:hover {
+  background-color: #b2beb5; 
+ }
+
+ .game{
+  margin-top: 5%;
+ }
+
+ .gameDescription{
+  margin-top: 2.5%;
+ }
+
+ .playGame{
+    padding-top: 5%;
+    border: 1px solid #282c34;
+    border-radius: 10px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    padding: .5%;
+    margin-bottom: 5%;
+ }
+
+ .playGame:hover {
+  background-color: #b2beb5; 
+ }
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

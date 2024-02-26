@@ -9,7 +9,8 @@ export function Education() {
         <div className="header">
           <h3>Bloomtech</h3>
           <p>
-          I completed a Full Stack Web Development program at Bloomtech, where I learned both front end and back end web development. The program taught me HTML, CSS, React libraries, Node.js, and SQL, along with many other tools and dependencies, such as knex.js, Redux, Auth0, and more. Furthermore, a large part of the course was dedicated to Algorithms, Big-O Notation, and Data Structures.
+            I am currently attending Bloomtech studying full stack web
+            development
           </p>
         </div>
         <div className="body">
@@ -18,7 +19,7 @@ export function Education() {
             I have Bachelors of Science degree from California State University
             Maritime Academy. I studied Maritime Transportation. Once I finished
             studies and passed all the requered USCG test I also received a
-            third mates unlimited license for all the oeceans. It is a license
+            third mate's unlimited license for all the oeceans. It is a license
             to navigate a vessel as a mate/officer. The studies were challenging
             some of the most challenging classes were Celestial Navigation,
             Radar, GMDSS, and Ship Stability. Nonetheless, the 7 USCG exams were

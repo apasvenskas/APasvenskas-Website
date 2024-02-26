@@ -1,11 +1,10 @@
 // home.js
 import React from "react";
-// import ReactDOM from "react-dom";
-import { createRoot } from 'react-dom';
-// import { Button } from "@material-ui/core";
+import ReactDOM from "react-dom";
+import { Button } from "@material-ui/core";
 import "./Game/snakeGame.css";
 
-function Home() {
+function Home(props) {
   
     const openGame = () => {
       window.open('/game', '_blank'); 
@@ -24,9 +23,7 @@ function Home() {
   );
 }
 
-const container = document.getElementById('root');
-const root = createRoot(container);
-root.render(<Home />);
+ReactDOM.render(<Button />, document.getElementById("root"));
 
 export default Home;
 
