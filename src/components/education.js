@@ -6,13 +6,13 @@ export function Education() {
     <>
       <h1>Education</h1>
       <div>
-        <div className="header">
+        <div className="edu-bloomtech">
           <h3>Bloomtech</h3>
           <p>
           I completed a Full Stack Web Development program at Bloomtech, where I learned both front end and back end web development. The program taught me HTML, CSS, React libraries, Node.js, and SQL, along with many other tools and dependencies, such as knex.js, Redux, Auth0, and more. Furthermore, a large part of the course was dedicated to Algorithms, Big-O Notation, and Data Structures.
           </p>
         </div>
-        <div className="body">
+        <div className="bachlors">
           <h3>Bachelors Degree</h3>
           <p>
             I have Bachelors of Science degree from California State University

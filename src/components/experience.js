@@ -5,22 +5,15 @@ export function Experience() {
     <>
       <h1>Experience</h1>
       <div>
-        <div className="header">
-          <h3>Bloomtech and Hobby</h3>
+        <div className="bloomtech">
+          <h3>Bloomtech and Projects</h3>
           <p>
-            The current experience recarding software development and
-            programin/coding in general is mainly with Bloomtech and Ren Py as a
-            hobby. Bloomtech is by far the more educational and challenging out
-            of the two involving frontend and backend of software devoplemnt.
-            While at Bloomtech used and worked with html, css, javaScript,
-            react, redux, jets, and node. Not tomention all the other variuos
-            tools that havent that havent been mentioned such as tailwind and
-            github. As far as Ren Py goes it is a hobby. Ren Py is used to creat
-            visual novel games. The code is based upone pyhtone; however, the
-            functions and code required are not to complicated.
+          My software development and coding skills are mainly based on my experience with Bloomtech and my personal projects, such as this portfolio website and others that you can find in the projects tab. Bloomtech has taught me a lot and challenged me to work on both frontend and backend aspects of software development. I have used and learned various technologies at Bloomtech, such as html, css, javaScript, react, redux, jets, and Node. I have also worked with other tools like tailwind, github, and Next.js. Besides that, I enjoy Ren Py as a hobby.
+          <br />
+          Lately, I have been expanding my knowledge of Next.js, a framework for building fast and scalable web applications. I have applied what I learned to create Next Food, a project that showcases different cuisines and recipes from around the world. I have also been working on an online art store, where I can sell my own digital artworks and prints. These projects have helped me improve my skills in web design, e-commerce, and SEO.
           </p>
         </div>
-        <div className="body">
+        <div className="mates">
           <h3>Masters, Mates, and Pilots</h3>
           <div>
             It is an organization through which I used to work before as a third
