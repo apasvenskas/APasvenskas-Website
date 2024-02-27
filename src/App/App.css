@@ -327,12 +327,17 @@ nav a:hover {
   background-color: transparent; 
  }
 
+ .a-tag{
+  text-decoration: none;
+  color: #282c34;
+ }
+
  .submit:hover {
   background-color: #99837d; 
  }
 
  .note{
-  color: red;
+  color: rgb(40, 17, 57);
  }
 
  @media screen and (max-width: 700px) {

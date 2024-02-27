@@ -10,7 +10,7 @@ export function Experience() {
           <p>
           My software development and coding skills are mainly based on my experience with Bloomtech and my personal projects, such as this portfolio website and others that you can find in the projects tab. Bloomtech has taught me a lot and challenged me to work on both frontend and backend aspects of software development. I have used and learned various technologies at Bloomtech, such as html, css, javaScript, react, redux, jets, and Node. I have also worked with other tools like tailwind, github, and Next.js. Besides that, I enjoy Ren Py as a hobby.
           <br />
-          Lately, I have been expanding my knowledge of Next.js, a framework for building fast and scalable web applications. I have applied what I learned to create Next Food, a project that showcases different cuisines and recipes from around the world. I have also been working on an online art store, where I can sell my own digital artworks and prints. These projects have helped me improve my skills in web design, e-commerce, and SEO.
+          Lately, I have been expanding my knowledge of Next.js, a framework for building fast and scalable web applications. I have applied what I learned to create Next Food, a project that showcases different cuisines and recipes from around the world. I have also been working on an online art store, where one can sell digital artworks and prints. These projects have helped me improve my skills in web design, e-commerce, and SEO.
           </p>
         </div>
         <div className="mates">
