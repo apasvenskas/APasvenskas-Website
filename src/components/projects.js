@@ -3,13 +3,56 @@ import { Link } from "react-router-dom";
 import StockChart from "../assets/StockChart.jpg";
 import AiSummarizer from "../assets/AiSumarizer.jpg";
 import NextFood from "../assets/NextFood.jpg";
+import NextEvent from "../assets/NextEvents.jpg"
 
 export function Projects() {
   let chart = StockChart;
   let summarizer = AiSummarizer;
   let food = NextFood
+  let events = NextEvent
   return (
     <>
+
+<h1>Projects</h1>
+      <div className="stock-chart">
+        <h3>Next.js Project / Next Events</h3>
+        <div className="projectInfo">
+          <div className="paragraph">
+            <h4>Description</h4>
+            <p>
+            The aim of this project is to enhance my Next.js abilities by developing a Next Event application/website. Users will have the ability to register for events, subscribe to newsletters, and post comments. The front end of the app/website is built with Next.js and CSS, while the back end utilizes both Firebase and MongoDB for data storage.
+            </p>
+            <div className="projectLink">
+              <p>Click the button to view the project at GitHub</p>
+              <Link
+                to="https://github.com/apasvenskas/Next.js-Project"
+                className="button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Next Events
+              </Link>
+            </div>
+          </div>
+          <div className="description">
+            <div className="span">
+              <span>CSS</span>
+              <span>HTML</span>
+              <span>Next.js</span>
+              <span>Firebase</span>
+              <span>MongoDB</span>
+            </div>
+            <img
+              src={events}
+              width="400px"
+              height="200px"
+              alt="screen shot of stock chart"
+              className="img"
+            />            
+          </div>
+        </div>
+      </div>
+
       <h1>Projects</h1>
       <div className="stock-chart">
         <h3>Next.js Project / Next Food</h3>
@@ -47,10 +90,11 @@ export function Projects() {
               height="200px"
               alt="screen shot of stock chart"
               className="img"
-            />
+            />            
           </div>
         </div>
       </div>
+
       <div className="stock-chart">
         <h3>Stock Chart</h3>
         <div className="projectInfo">
@@ -95,6 +139,7 @@ export function Projects() {
           </div>
         </div>
       </div>
+
       <div className="AIproject">
         <h3>AI Sumarizer</h3>
         <div className="projectInfo">

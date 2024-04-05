@@ -77,11 +77,12 @@ function Contacts() {
         placeholder="Phone #"
         onChange={handlePhoneChange}
       />
-      {/* <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a> */}
       <button className="submit" type="submit">
         <a
           className="a-tag"
-          href={`mailto:apasvenskas@outlook.com?body=Name: ${name}, \nEmail: ${email}, \nPhone: ${phone}`}
+          href={`mailto:apasvenskas@outlook.com?body= 
+          ${"The following contact info will be emailed to the address above"}
+          Name: ${name}, \nEmail: ${email}, \nPhone: ${phone}`}
         >
           Submit & Email
         </a>
