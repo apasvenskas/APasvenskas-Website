@@ -4,10 +4,10 @@ import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
 import { Education } from "../components/education";
 import { Experience } from "../components/experience";
 import { Projects } from "../components/projects";
-import Contacts from "../components/contacts";
 import { AboutMe } from "../components/about-me";
 import Game from "../components/Game/snakeGame";
 import Home from "../components/home";
+import Footer from "../components/Layout/footer";
 
 function App() {
   return (
@@ -80,21 +80,17 @@ function App() {
             <NavLink id="about-me" to="/about-me">
               Where I Come From
             </NavLink>
-            <NavLink id="contacts" to="/contacts">
-              Contacts
-            </NavLink>
           </nav>
-          {/* <Routes path="/" element={<Home />} /> */}
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/education" element={<Education />} />
             <Route path="/experience" element={<Experience />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/about-me" element={<AboutMe />} />
-            <Route path="/contacts" element={<Contacts />} />
             <Route path="/game" element={<Game />} />
           </Routes>
         </header>
+        <Footer />
       </div>
     </BrowserRouter>
   );
