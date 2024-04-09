@@ -1,21 +1,22 @@
 // home.js
 import React from "react";
 // import ReactDOM from "react-dom";
-import { createRoot } from 'react-dom';
+import { createRoot } from "react-dom";
 // import { Button } from "@material-ui/core";
 import "./Game/snakeGame.css";
 
-function Home() {
-  
-    const openGame = () => {
-      window.open('/game', '_blank'); 
-    };
+function Game() {
+  const openGame = () => {
+    window.open("/game", "_blank");
+  };
 
   return (
     <div className="game">
       <h1>Games</h1>
       <p className="gameDescription">
-        A simple snake game that will open in a new window for desktop browser.
+        A simple snake game that will open in a new window for desktop browser.{" "}
+        <br />
+        Currently only playable on windows or android divices.
       </p>
       <button onClick={openGame} className="playGame">
         Play Snake Game
@@ -24,9 +25,8 @@ function Home() {
   );
 }
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<Home />);
+root.render(<Game />);
 
-export default Home;
-
+export default Game;
