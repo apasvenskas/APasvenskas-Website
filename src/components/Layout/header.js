@@ -38,15 +38,12 @@ function Header(){
           <h3>Introduction</h3>
           <p className="introductoryParagraph">
             Welcome to my profile website, where I showcase some of my
-            software/web development skills. I built this site using: CSS,
+            software/web development skills. I am Audrius Pasvenskas and I have built this site using: CSS,
             React, Node.js.You can explore the following tabs to learn more
             about me and my projects. Games: Here you can play some games that
             I coded using React and CSS, such as Snake Game. Previous
             Projects: Here you can find links to some of my previous projects.
-            Contacts: Here you can leave your contact info and it will be
-            stored in the SQL database, and I will get in touch with you as
-            soon as possible. (I am working on an automated email feature that
-            will send me your contacts in an email.)
+            Laslty, at the bottom you will find contacts here you can leave your contact info and send me an email. 
           </p>
           <a href="https://docs.google.com/document/d/1yXMdbjNGneWkooiBlTQNsmGM1zFRL0NdebBdN87TOm4/edit?usp=sharing" 
             target="_blank" rel="noopener noreferrer" download className="btn-download">

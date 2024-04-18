@@ -4,16 +4,57 @@ import StockChart from "../assets/StockChart.jpg";
 import AiSummarizer from "../assets/AiSumarizer.jpg";
 import NextFood from "../assets/NextFood.jpg";
 import NextEvent from "../assets/NextEvents.jpg"
+import AudriusBlog from "../assets/audriusBlog.jpg"
 
 export function Projects() {
   let chart = StockChart;
   let summarizer = AiSummarizer;
   let food = NextFood
   let events = NextEvent
+  let blog = AudriusBlog
   return (
     <>
 
 <h1>Projects</h1>
+<div className="stock-chart">
+        <h3>Next.js Project / Audrius Blog</h3>
+        <div className="projectInfo">
+          <div className="paragraph">
+            <h4>Description</h4>
+            <p>
+            Introducing a cutting-edge blog platform designed for the modern developer. Built with the robust Next.js framework, this blog website serves as a hub for sharing insightful development-related content, with a focus on Next.js and AWS technologies. The backend is powered by MongoDB, ensuring that user data, such as contact information and messages, is securely managed and easily accessible. Styled with sleek CSS, the user interface promises a seamless reading experience. Deployment on Vercels server guarantees high availability and performance, making it an ideal destination for developers seeking the latest industry knowledge.
+            </p>
+            <div className="projectLink">
+              <p>Click the button to view the deployd project</p>
+              <Link
+                to="https://api-routes-next-js-pi.vercel.app/"
+                className="button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Audrius Blog
+              </Link>
+            </div>
+          </div>
+          <div className="description">
+            <div className="span">
+              <span>CSS</span>
+              <span>HTML</span>
+              <span>Next.js</span>
+              <span>Vercel</span>
+              <span>MongoDB</span>
+            </div>
+            <img
+              src={blog}
+              width="400px"
+              height="200px"
+              alt="screen shot of stock chart"
+              className="img"
+            />            
+          </div>
+        </div>
+      </div>
+
       <div className="stock-chart">
         <h3>Next.js Project / Next Events</h3>
         <div className="projectInfo">

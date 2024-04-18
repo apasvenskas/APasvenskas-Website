@@ -16,7 +16,7 @@ function Game() {
       <p className="gameDescription">
         A simple snake game that will open in a new window for desktop browser.{" "}
         <br />
-        Currently only playable on windows or android divices.
+        Currently only playable on windows or android devices.
       </p>
       <button onClick={openGame} className="playGame">
         Play Snake Game
