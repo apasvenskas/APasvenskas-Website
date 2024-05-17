@@ -43,7 +43,7 @@ function Header(){
             about me and my projects. Games: Here you can play some games that
             I coded using React and CSS, such as Snake Game. Previous
             Projects: Here you can find links to some of my previous projects.
-            Laslty, at the bottom you will find contacts here you can leave your contact info and send me an email. 
+            Lastly, at the bottom you will find contacts here you can leave your contact info and send me an email. 
           </p>
           <a href="https://docs.google.com/document/d/1yXMdbjNGneWkooiBlTQNsmGM1zFRL0NdebBdN87TOm4/edit?usp=sharing" 
             target="_blank" rel="noopener noreferrer" download className="btn-download">

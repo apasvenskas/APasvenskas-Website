@@ -1,16 +1,58 @@
 import React from "react";
-import "./education.css"
+import "./education.css";
+import bloom from "../assets/bloom.jpg";
+import next from "../assets/Next.jpg";
 
 export function Education() {
+  const Bloom = bloom;
+  const Next = next;
   return (
     <>
       <h1>Education</h1>
       <div>
         <div className="edu-bloomtech">
+          <h3>Udemy</h3>
+          <div className="educationInfo">
+            <p>
+              I have successfully completed a comprehensive Next.js course on
+              Udemy, which was exceptionally informative and taught me a great
+              deal. It covered the fundamentals of Next.js, including the
+              routing system, static and server-side properties, among other
+              features. Additionally, the course delved deeper into React
+              concepts, providing a valuable refresher on essential topics like
+              components and routing. Moreover, I have invested in further in
+              Udemy for courses such as, AWS and machine learning. While I
+              havent completed them yet, these subjects are fascinating and I am
+              eager to learn more about them.
+            </p>
+            <img
+              src={Next}
+              width="300px"
+              height="200px"
+              alt="screen shot of stock chart"
+              className="img"
+            />
+          </div>
+        </div>
+        <div className="edu-bloomtech">
           <h3>Bloomtech</h3>
+          <div className="educationInfo">
           <p>
-          I completed a Full Stack Web Development program at Bloomtech, where I learned both front end and back end web development. The program taught me HTML, CSS, React libraries, Node.js, and SQL, along with many other tools and dependencies, such as knex.js, Redux, Auth0, and more. Furthermore, a large part of the course was dedicated to Algorithms, Big-O Notation, and Data Structures.
+            I completed a Full Stack Web Development program at Bloomtech, where
+            I learned both front end and back end web development. The program
+            taught me HTML, CSS, React libraries, Node.js, and SQL, along with
+            many other tools and dependencies, such as knex.js, Redux, Auth0,
+            and more. Furthermore, a large part of the course was dedicated to
+            Algorithms, Big-O Notation, and Data Structures.
           </p>
+          <img
+            src={Bloom}
+            width="300px"
+            height="200px"
+            alt="screen shot of stock chart"
+            className="img"
+          />
+          </div>
         </div>
         <div className="bachlors">
           <h3>Bachelors Degree</h3>
