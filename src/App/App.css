@@ -225,7 +225,7 @@ nav a:hover {
   margin-bottom: 5%;
  }
 
- .bachlors{
+ .bachelors{
   border: 2px solid #524617;
   border-radius: 10px;
   margin-left: 7%;
@@ -358,7 +358,15 @@ nav a:hover {
   .projectInfo{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left:9%;
    }
+
+   .img:hover {
+    transform: scale(1.2);
+  }
+
    .stock-chart{
     display: flex;
     flex-direction: column;
@@ -377,6 +385,23 @@ nav a:hover {
     max-width: 100%;
     max-height: 200px;
   }
+  /* education */
+  .edu-bloomtech {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* optional, to center the text horizontally */
+    margin: 7%;
+
+  }
+  .educationInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+   }
 }
 
 @keyframes App-logo-spin {

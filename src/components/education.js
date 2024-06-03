@@ -37,24 +37,24 @@ export function Education() {
         <div className="edu-bloomtech">
           <h3>Bloomtech</h3>
           <div className="educationInfo">
-          <p>
-            I completed a Full Stack Web Development program at Bloomtech, where
-            I learned both front end and back end web development. The program
-            taught me HTML, CSS, React libraries, Node.js, and SQL, along with
-            many other tools and dependencies, such as knex.js, Redux, Auth0,
-            and more. Furthermore, a large part of the course was dedicated to
-            Algorithms, Big-O Notation, and Data Structures.
-          </p>
-          <img
-            src={Bloom}
-            width="300px"
-            height="200px"
-            alt="screen shot of stock chart"
-            className="img"
-          />
+            <p>
+              I completed a Full Stack Web Development program at Bloomtech,
+              where I learned both front end and back end web development. The
+              program taught me HTML, CSS, React libraries, Node.js, and SQL,
+              along with many other tools and dependencies, such as knex.js,
+              Redux, Auth0, and more. Furthermore, a large part of the course
+              was dedicated to Algorithms, Big-O Notation, and Data Structures.
+            </p>
+            <img
+              src={Bloom}
+              width="300px"
+              height="200px"
+              alt="screen shot of stock chart"
+              className="img"
+            />
           </div>
         </div>
-        <div className="bachlors">
+        <div className="bachelors">
           <h3>Bachelors Degree</h3>
           <p>
             I have Bachelors of Science degree from California State University
