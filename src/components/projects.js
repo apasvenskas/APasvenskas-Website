@@ -5,6 +5,7 @@ import AiSummarizer from "../assets/AiSumarizer.jpg";
 import NextFood from "../assets/NextFood.jpg";
 import NextEvent from "../assets/NextEvents.jpg"
 import AudriusBlog from "../assets/audriusBlog.jpg"
+import Commercial from "../assets/commercial.jpg"
 
 export function Projects() {
   let chart = StockChart;
@@ -12,10 +13,53 @@ export function Projects() {
   let food = NextFood
   let events = NextEvent
   let blog = AudriusBlog
+  let commercial = Commercial
   return (
     <>
 
 <h1>Projects</h1>
+
+<div className="stock-chart">
+        <h3>A Commercial Website For Artist Association</h3>
+        <div className="projectInfo">
+          <div className="paragraph">
+            <h4>Description</h4>
+            <p>
+            This commercial website project is a demo version created for the Lithuanian artist association, Laisvieji Menininkai. The site dynamically loads pages based on the type of art a user is searching for and displays high-quality images. Built with the JavaScript library Next.js, it supports both dynamic and static pages. The project utilizes Hygraph for data storage and access, offering ease of use and implementation. Styling is handled with CSS, while Auth0 is used for authentication and authorization. For transactions, the app integrates PayPal for secure payments.
+            </p>
+            <div className="projectLink">
+              <p>Click the button to view the deployd project</p>
+              <Link
+                to="https://laisviejimenininkai.vercel.app/"
+                className="button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Commercial Website
+              </Link>
+            </div>
+          </div>
+          <div className="description">
+            <div className="span">
+              <span>CSS</span>
+              <span>HTML</span>
+              <span>Next.js</span>
+              <span>Vercel</span>
+              <span>Hygraph</span>
+              <span>Auth0</span>
+              <span>PayPal</span>
+            </div>
+            <img
+              src={commercial}
+              width="400px"
+              height="200px"
+              alt="screen shot of stock chart"
+              className="img"
+            />            
+          </div>
+        </div>
+      </div>
+
 <div className="stock-chart">
         <h3>Next.js Project / Audrius Blog</h3>
         <div className="projectInfo">
